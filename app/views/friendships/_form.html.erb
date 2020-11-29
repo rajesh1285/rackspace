@@ -1,0 +1,50 @@
+<div class="container">
+<%= form_with scope: :friendship, url: friendships_path, local: true do |f| %>
+ 
+  <% if @friendship.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@friendship.errors.count, "error") %> prohibited
+        this friendship from being saved:
+      </h2>
+      <ul>
+        <% @friendship.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <h2>User Profiles</h2>
+  <p>
+    <%= f.label :User_name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :Website_url %><br>
+    <%= f.text_field :website_url %>
+  <p>
+  <p>
+    <!-- <%= f.label :user_id,type: :hidden %><br> -->
+    <%= f.text_field :user_id,id: :friendship_user_id,value: current_user.id,type: :hidden %>
+  <p>  
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', friendships_path %>
+</div>
+
+<!-- <script type="text/javascript">
+  var age = "";
+  $("#customer_date_of_birth_1i, #customer_date_of_birth_2i, #customer_date_of_birth_3i").change(function(){
+    var year_selected = $("#customer_date_of_birth_1i, #customer_date_of_birth_2i, #customer_date_of_birth_3i").val();
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var days = today.getDate();
+    age = year - year_selected
+    $('#age').val(age);
+  });
+</script> -->

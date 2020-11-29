@@ -1,0 +1,33 @@
+<%= render "nav_bar/nav"%>
+<div class="container">
+	<%= form_tag friendships_path, :method => 'get'  do %>
+   	 <%= text_field_tag :search, params[:search]%>
+  	 <%= submit_tag "Search", :name => nil  %>
+ 	<% end %>
+
+	<table class="table table-striped">
+			<tr>
+				<th> Name </th>
+				<th>website url</th>
+				<th>User Id</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th>Friends
+					<%= @friendships.count%>
+				</th>
+			</tr>
+			<%@friendships.each do |friendship|%>
+
+				<% if friendship.user_id = current_user.id %>
+					<tr>
+						<td><%= friendship.name%></td>
+						<td><%= friendship.website_url%></td>
+						<td><%= friendship.user_id%></td>
+						<td><%= link_to "show",friendship_path(friendship) %></td>
+						<td><%= link_to "edit",edit_friendship_path(friendship) %></td>
+						<td><%= link_to "delete",friendship_path(friendship),method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% end %>	
+			<%end%>
+	</table>	
+</div>

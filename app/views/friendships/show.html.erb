@@ -1,0 +1,23 @@
+<div class="container">
+	<b>Friend Show Page</b>
+	<p>
+	  <strong>User Name: </strong>
+	  <%= @friendship.name %>
+	</p>
+	 
+	<p>
+	  <strong>Website Url: </strong>
+	  <%= @friendship.website_url %>
+	</p>
+	<table class="table table-striped">
+		<tr>
+			<th> Title </th>
+			<th> Description </th>
+		</tr>
+		<tr>
+			<td><%= @friendship.titile%></td>
+			<td><%= @friendship.description%></td>
+		</tr>	
+	</table>
+	<%= link_to 'Back', friendships_path %>
+</div>

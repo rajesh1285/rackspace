@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-inverse">
+  <a class="navbar-brand" href="/">Friendship</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <% if signed_in? %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Add New Friends", new_friendship_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path, class: 'nav-link' %>
+      <% end %>  
+      </li>
+    </ul>
+  <% if signed_in? %>  
+    <form class="nav-item">
+      <%= link_to current_user.email,class: 'nav-link'%>
+    </form>
+  <% end %>  
+  </div>
+</nav>
